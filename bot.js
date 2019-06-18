@@ -36,9 +36,9 @@ function create(payload) {
 }
 
 function _event(eventType, jsonData) {
-    var message = `Event on repository: ${jsonData.repository.html_url}\n` +
+    let message = `Event on repository: ${jsonData.repository.html_url}\n` +
               `Updated at ${jsonData.repository.updated_at} by user ${jsonData.sender.login}`;
-    var details;
+    let details;
 
     switch (eventType){
         case "ping": {
@@ -58,10 +58,9 @@ function _event(eventType, jsonData) {
         }
     }
 
-    for (var channelId in config.get('discord.registered_channels')) {
-        client.channels.find("name", "bot-errors").send(message + "\n\n" + details);
-        console.log(message + "\n\n" + details);
-    }
+    config.get('discord.registered_channels').forEach((channelId) => {
+        client.channels.find((channel) => channel.id === channelId).send(message + "\n\n" + details);
+    });
 }
 
 
