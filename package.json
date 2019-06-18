@@ -2,8 +2,9 @@
     "name": "wumpus-and-the-octocat",
     "version": "0.0.1",
     "private": true,
-    "description": "",
+    "description": "A nodejs bot for Discord which listens for GitHub communications",
     "main": "bin/www",
+    "license": "MIT",
     "author": "M4Numbers <m4numbers@gmail.com>",
     "scripts": {
         "start": "node ./bin/www"
