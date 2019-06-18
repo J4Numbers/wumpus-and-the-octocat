@@ -1,12 +1,12 @@
-var express = require('express');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var bot = require('./bot');
+const bot = require('./bot');
 bot.init();
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -20,20 +20,20 @@ app.post('/', function (req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.end();
+    // render the error page
+    res.status(err.status || 500);
+    res.end();
 });
 
 module.exports = app;
