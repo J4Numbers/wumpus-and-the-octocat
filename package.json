@@ -1,0 +1,22 @@
+{
+    "name": "Wumpus-and-the-OctoCat",
+    "version": "0.0.1",
+    "private": true,
+    "description": "",
+    "main": "index.js",
+    "author": "M4Numbers (m4numbers@gmail.com)",
+    "scripts": {
+        "start": "node ./bin/www"
+    },
+    "dependencies": {
+        "body-parser": "~1.18.2",
+        "config": "^3.1.0",
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.9",
+        "discord.js": "^11.3.0",
+        "express": "~4.15.5",
+        "morgan": "~1.9.0",
+        "serve-favicon": "~2.4.5",
+        "winston": "^2.4.0"
+    }
+}
