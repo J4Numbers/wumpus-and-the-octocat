@@ -3,7 +3,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const bot = require('./bot');
+const bot = require('./lib/discord/bot');
 bot.init();
 
 const app = express();
