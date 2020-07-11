@@ -7,8 +7,15 @@
     "license": "MIT",
     "author": "J4Numbers <j4numbers@gmail.com>",
     "scripts": {
+        "clean": "rm -rf src/js/",
         "compile": "tsc --project src/tsconfig.json",
-        "start": "node src/app"
+        "quality:eslint": "eslint .",
+        "quality:eslint:fix": "eslint . --fix",
+        "regenerate-certs": "openssl req -x509 -newkey rsa:2048 -nodes -days 365 -sha256 -subj '/CN=localhost' -keyout certs/localhost-privkey.pem -out certs/localhost-cert.pem",
+        "start": "node src/app.js",
+        "test": "npm run test:js",
+        "test:js": "nyc --all mocha --config test/.mocharc.js",
+        "test:coverage": "nyc check-coverage"
     },
     "dependencies": {
         "bunyan": "^1.8.14",
@@ -22,6 +29,17 @@
         "@octokit/webhooks": "^7.6.4",
         "@types/bunyan": "^1.8.6",
         "@types/config": "0.0.36",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "chai-http": "^4.3.0",
+        "clear-module": "^4.1.1",
+        "eslint": "^7.4.0",
+        "import-fresh": "^3.2.1",
+        "mocha": "^8.0.1",
+        "mock-require": "^3.0.3",
+        "nyc": "^15.1.0",
+        "sinon": "^9.0.2",
+        "sinon-chai": "^3.5.0",
         "typescript": "^3.9.6"
     }
 }
