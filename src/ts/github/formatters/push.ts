@@ -9,8 +9,7 @@ export function format(payload: Webhooks.WebhookPayloadPush): string {
             + `onto branch '${payload.ref}' with fast-forwarded commits:\n`;
     }
     for (let i in payload.commits) {
-        details += `\t${payload.commits[i].timestamp} :: `
-            + `${payload.commits[i].author["username"]} :: `
+        details += `\t${payload.commits[i].author["username"]} :: `
             + `${payload.commits[i].message}\n`;
     }
     return details;
