@@ -7,6 +7,7 @@
     "license": "MIT",
     "author": "J4Numbers <j4numbers@gmail.com>",
     "scripts": {
+        "compile": "tsc --project src/tsconfig.json",
         "start": "node src/app"
     },
     "dependencies": {
@@ -16,5 +17,11 @@
         "restify": "^8.5.1",
         "restify-errors": "^8.0.2",
         "uuid": "^8.2.0"
+    },
+    "devDependencies": {
+        "@octokit/webhooks": "^7.6.4",
+        "@types/bunyan": "^1.8.6",
+        "@types/config": "0.0.36",
+        "typescript": "^3.9.6"
     }
 }

@@ -22,13 +22,17 @@
  * SOFTWARE.
  */
 
-const bot = require('../../lib/discord/bot');
-bot.init();
+const errors = require('restify-errors');
+const bot = require('../../js/bot').resolveDiscordBot();
 
-const postToBot = (req, res, next) => {
-    bot.event(req.headers["x-github-event"], req.body);
-    next();
-}
+const postToBot = async (req, res, next) => {
+    try {
+        await bot.event(req.headers["x-github-event"], req.body);
+        next();
+    } catch (e) {
+        throw new errors.InternalServerError(e.message);
+    }
+};
 
 const manageResponse = (req, res, next) => {
     res.send(204);
