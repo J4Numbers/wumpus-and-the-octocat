@@ -3,8 +3,10 @@ const config = require('config');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
+const logger = require('../logger').bunyanLogger();
+
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    logger.info(`Logged in as ${client.user.tag}!`);
 });
 
 function _init() {
@@ -36,6 +38,8 @@ function create(payload) {
 }
 
 function _event(eventType, jsonData) {
+    logger.info(`Received ${eventType} request from ${jsonData.repository.html_url}`);
+
     let message = `Event on repository: ${jsonData.repository.html_url}\n` +
               `Updated at ${jsonData.repository.updated_at} by user ${jsonData.sender.login}`;
     let details;
