@@ -15,6 +15,7 @@
         "start": "node src/app.js",
         "test": "npm run test:js",
         "test:js": "nyc --all mocha --config test/.mocharc.js",
+        "test:ts": "TS_NODE_PROJECT=./src/tsconfig.json nyc mocha --config test/.ts.mocharc.js src/ts/**/*.ts",
         "test:coverage": "nyc check-coverage"
     },
     "dependencies": {
@@ -28,7 +29,9 @@
     "devDependencies": {
         "@octokit/webhooks": "^7.6.4",
         "@types/bunyan": "^1.8.6",
+        "@types/chai": "^4.2.11",
         "@types/config": "0.0.36",
+        "@types/mocha": "^7.0.2",
         "chai": "^4.2.0",
         "chai-as-promised": "^7.1.1",
         "chai-http": "^4.3.0",
@@ -40,6 +43,7 @@
         "nyc": "^15.1.0",
         "sinon": "^9.0.2",
         "sinon-chai": "^3.5.0",
+        "ts-node": "^8.10.2",
         "typescript": "^3.9.6"
     }
 }
