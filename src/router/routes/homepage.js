@@ -30,7 +30,7 @@ const postToBot = async (req, res, next) => {
         await bot.event(req.headers["x-github-event"], req.body);
         next();
     } catch (e) {
-        throw new errors.InternalServerError(e.message);
+        next(new errors.InternalServerError(e.message));
     }
 };
 

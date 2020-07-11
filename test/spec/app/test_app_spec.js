@@ -24,6 +24,8 @@
 
 const application = '../../../src/app';
 
+const dummyPing = require('../../../data/dummy-ping.json');
+
 describe('The application on http/s', function () {
    before(function () {
        process.env.ALLOW_CONFIG_MUTATIONS = 'true';
@@ -47,10 +49,11 @@ describe('The application on http/s', function () {
 
        it('Should not accept a get request to root', function () {
           return request(testRequire(application))
-              .get('/')
+              .post('/')
+              .send(dummyPing)
               .then((response) => {
-                 expect(response).to.have.status(405);
-                 expect(response).to.be.json;
+                 expect(response).to.have.status(204);
+                 expect(response).to.not.have.header('content-type');
               });
        });
    });
@@ -58,6 +61,25 @@ describe('The application on http/s', function () {
    describe('Error pages', function () {
        afterEach(function () {
            clearModule(application);
+       });
+
+       it('Should not accept a get request to root', function () {
+           return request(testRequire(application))
+               .get('/')
+               .then((response) => {
+                   expect(response).to.have.status(405);
+                   expect(response).to.be.json;
+               });
+       });
+
+       it('Should return a 500 page when the content was incomplete', function () {
+          return request(testRequire(application))
+              .post('/')
+              .send({})
+              .then((response) => {
+                  expect(response).to.have.status(500);
+                  expect(response).to.be.json;
+              });
        });
 
        it('Should return a 404 page for non-existent URLs', function () {
