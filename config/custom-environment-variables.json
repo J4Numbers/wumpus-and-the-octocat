@@ -1,0 +1,19 @@
+{
+    "app": {
+        "http2": {
+            "enabled": "APP_HTTP2_ENABLED",
+            "key": "APP_HTTP2_KEY",
+            "cert": "APP_HTTP2_CERT"
+        },
+        "hostname": "APP_HOSTNAME",
+        "name": "APP_NAME",
+        "port": "APP_PORT"
+    },
+    "discord": {
+        "token": "DISCORD_TOKEN",
+        "registered_channels": "DISCORD_REGISTERED_CHANNELS"
+    },
+    "logger": {
+        "level": "LOGGER_LEVEL"
+    }
+}

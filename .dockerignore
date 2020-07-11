@@ -1,0 +1,11 @@
+.idea/
+
+.nyc_output/
+coverage/
+certs/
+data/
+scripts/
+test/
+
+node_modules/
+src/js
