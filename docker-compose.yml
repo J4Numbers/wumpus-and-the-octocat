@@ -1,0 +1,18 @@
+version: '3'
+services:
+  wumpus-and-the-octocat:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - "./certs:/etc/ssl/"
+    environment:
+      APP_HOSTNAME: "host.docker.internal"
+      APP_PORT: "8080"
+      APP_HTTP2_ENABLED: 1
+      APP_HTTP2_KEY: "/etc/ssl/localhost-privkey.pem"
+      APP_HTTP2_CERT: "/etc/ssl/localhost-cert.pem"
+      DISCORD_TOKEN: "NDA4NDA4NjYxNzU3NjU3MDk4.DVPpzw.HHN67gdz5AhTR7UpBkX1Lv42Ajw"
+      DISCORD_REGISTERED_CHANNELS: "269425567223382016"
+    ports:
+      - "8080:8080"

@@ -5,9 +5,13 @@ let discordBot: DiscordBot;
 
 export function resolveDiscordBot(): DiscordBot {
     if (discordBot === undefined) {
+        let channels: Array<string> | string = config.get("discord.registered_channels");
+        if (typeof channels === 'string') {
+            channels = channels.split(',');
+        }
         discordBot = new DiscordBot(
             config.get("discord.token"),
-            config.get("discord.registered_channels"),
+            channels,
         );
     }
     return discordBot;
